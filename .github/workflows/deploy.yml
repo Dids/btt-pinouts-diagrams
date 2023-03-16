@@ -34,7 +34,7 @@ jobs:
       - name: Upload Build Artifacts
         uses: actions/upload-pages-artifact@v1
         with:
-          name: pages
+          name: github-pages
           path: build
 
   # Deploy job
