@@ -27,3 +27,6 @@
 # Allow license files
 !LICENSE
 !LICENSE.md
+
+# Allow dependency files
+!requirements.txt
