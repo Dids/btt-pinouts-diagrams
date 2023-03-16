@@ -93,7 +93,7 @@ cables:
     color_code: DIN # auto-assign colors based on DIN 47100
     wirelabels: [GND, TX, RX, +5V]
     show_wirenumbers: False
-    notes: Serial over UART
+    notes: Serial over UART.
 
 connections:
   -
