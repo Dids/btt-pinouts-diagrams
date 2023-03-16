@@ -14,7 +14,7 @@ See the [website](https://dids.github.io/btt-pinouts-diagrams/) for the full, up
 
 ### BTT CB1 + TFT35 SPI + Serial-over-UART
 
-![Diagram](https://dids.github.io/btt-pinouts-diagrams/index.png)
+[![Diagram](https://dids.github.io/btt-pinouts-diagrams/index.png)](https://dids.github.io/btt-pinouts-diagrams/)
 
 ## License
 
