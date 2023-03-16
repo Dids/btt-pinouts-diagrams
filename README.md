@@ -19,6 +19,7 @@ See the [website](https://dids.github.io/btt-pinouts-diagrams/) for the full, up
 ## License
 
 ![License Image](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)
-Portions of this work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/).
 
-Other portions of this work are licensed under their respective licenses, or are in the public domain, or fall under fair use.
+Portions of this work are licensed under the [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/).
+
+Other portions are licensed under their respective licenses, or are in the public domain, or fall under fair use. The same applies for copyrights, trademarks and other intellectual property rights.
