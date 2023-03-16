@@ -1,0 +1,106 @@
+#
+# WireViz Input File
+#
+# Requirements (macOS):
+# - Python 3
+# - brew install graphviz
+# - python3 -m pip install wireviz
+#
+# Usage:
+# - wireviz cb1_tft35_spi.yml && open cb1_tft35_spi.html
+#
+# Wiring example:
+#
+# [TFT35]                                 [CB1]
+# IORQ <-                              ->   NC
+#  SCL <- SOC_TP_IRQ                   -> PC10 (PIN 15)
+#  SDA <- SOC_Backlight                -> PC12 (PIN 13)
+#   RS <- SOC_TOUCH_CS                 -> PC14 (PIN 11)
+#  NSS <- SOC_LCD_CS                   ->  PC7 (PIN  7)
+#  SCK <- SOC_SCK                      ->  PH6 (PIN 23)
+# MOSI <- SOC_MOSI                     ->  PH7 (PIN 19)
+# MISO <- SOC_MISO                     ->  PH8 (PIN 21)
+#  GND <-                              ->  GND (PIN  5)
+#  +5V <-                              ->  +5V (PIN  4)
+
+metadata:
+  title: BIGTREETECH CB1 + TFT35 SPI (+ UART)
+  description: Two sample wiring diagrams for connecting the BTT CB1 SoC to a BTT TFT35 SPI display via GPIO (SPI + I2C), as well as to an MCU (mainboard) via GPIO (UART).
+  notes: |
+    Ensure that your specific hardware revisions are compatible with the pinout shown here.
+    Also note that the MCU example shown for UART here may only be applicable to the Ender-7 stock mainboard,
+    as its display port/connector could be directly used for UART/serial communication.
+    As for the cables, most cables/wires should work fine here, so long as the distances are kept relatively short.
+
+connectors:
+  CB1:
+    hide_disconnected_pins: True
+    pincount: 40
+    pins: [4, 5, 6, 7, 8, 10, 11, 13, 15, 19, 21, 23]
+    pinlabels: [+5V, GND, GND, PC7, TX, RX, PC14, PC12, PC10, PH7, PH8, PH6]
+    type: GPIO
+    subtype: female
+    notes: BTT CB1 V2.2
+    manufacturer: BIGTREETECH
+    image:
+      src: images/bigtreetech_cb1.jpg
+      width: 150
+    ignore_in_bom: True
+  TFT35:
+    pinlabels: [IORQ, SCL, SDA, RS, NSS, SCK, MOSI, MISO, GND, +5V] # pincount implicit in pinout
+    type: JST-XH
+    subtype: female
+    notes: BTT TFT35 SPI V2.2
+    manufacturer: BIGTREETECH
+    image:
+      src: images/bigtreetech_tft35_spi.png
+      width: 200
+    ignore_in_bom: True
+  MCU:
+    # hide_disconnected_pins: False
+    pincount: 6
+    # pins: [1, 3, 4, 6]
+    pinlabels: [GND, NC, RX, TX, NC, +5V]
+    # type: UART
+    type: JST-XH
+    notes: The display connector was used here.
+    manufacturer: Creality
+    image:
+      src: images/ender-7_board.png
+      width: 250
+    ignore_in_bom: True
+
+cables:
+  DISPLAY CABLE:
+    type: RIBBON
+    wirecount: 9
+    length: 10 cm
+    gauge: 24 AWG # specify gauge in AWG directly
+    show_equiv: True # auto-calculate AWG equivalent
+    color_code: DIN # auto-assign colors based on DIN 47100
+    wirelabels: [SOC_TP_IRQ, SOC_Backlight, SOC_TOUCH_CS, SOC_LCD_CS, SOC_SCK, SOC_MOSI, SOC_MISO, GND, +5V]
+    show_wirenumbers: False
+    notes: A ribbon cable works well in this scenario.
+    image:
+      src: images/ribbon_cable.png
+      width: 150
+  SERIAL CABLE:
+    type: WIRE
+    wirecount: 4
+    length: 10 cm
+    gauge: 24 AWG # specify gauge in AWG directly
+    show_equiv: True # auto-calculate AWG equivalent
+    color_code: DIN # auto-assign colors based on DIN 47100
+    wirelabels: [GND, TX, RX, +5V]
+    show_wirenumbers: False
+    notes: Serial over UART
+
+connections:
+  -
+    - CB1: [15, 13, 11, 7, 23, 19, 21, 5, 4]
+    - DISPLAY CABLE: [1-9]
+    - TFT35: [2-10]
+  -
+    - CB1: [6, 8, 10]
+    - SERIAL CABLE: [1-3]
+    - MCU: [1, 3, 4]
